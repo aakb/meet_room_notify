@@ -10,18 +10,18 @@
 class WifiSetup {
   public:
     // Constructor(s)
-    WifiSetup(config kobaConfig);
+    WifiSetup(servConfig config);
 
     void begin();
     bool hasConfigChanged();
     IPAddress getIp();
-    config getConfig();
+    servConfig getConfig();
 
     static void saveConfigCallback();
     static bool shouldSaveConfig;
     
   private:
-    config config;
+    servConfig config;
 };
 
 #endif

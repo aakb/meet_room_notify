@@ -17,7 +17,7 @@ class Config {
     bool load();
     bool save();
 
-    config config;
+    servConfig config;
 };
 
 #endif

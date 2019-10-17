@@ -6,7 +6,7 @@ bool WifiSetup::shouldSaveConfig = false;
 /**
  * Constructor.
  */
-WifiSetup::WifiSetup(config config) {
+WifiSetup::WifiSetup(servConfig config) {
     WifiSetup::shouldSaveConfig = false;
 
     this->config = config;
@@ -37,7 +37,7 @@ void WifiSetup::saveConfigCallback () {
 /**
  * Get current configuration.
  */
-config WifiSetup::getConfig() {
+servConfig WifiSetup::getConfig() {
   return this->config;
 }
 
