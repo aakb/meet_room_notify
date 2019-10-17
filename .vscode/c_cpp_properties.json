@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/Users/cableman/Library/Arduino15/packages/esp8266/tools/**",
+                "/Users/cableman/Library/Arduino15/packages/esp8266/hardware/esp8266/2.5.2/**",
+                "/Users/cableman/Library/Arduino15/packages/esp8266/hardware/esp8266/2.5.2/libraries/Ticker",
+                "/Users/cableman/Documents/Arduino/libraries/WiFiManager/*",
+                "/Users/cableman/Documents/Arduino/libraries/Adafruit_NeoPixel/*",
+                "/Users/cableman/Documents/Arduino/libraries/ArduinoJson/src",
+                "/Users/cableman/Documents/Arduino/meet_room_notify/",
+                "/Users/cableman/Documents/Arduino/meet_room_notify/*"
+            ],
+            "forcedInclude": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
