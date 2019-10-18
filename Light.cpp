@@ -3,21 +3,21 @@
 #define PIN D1
 #define NUMPIXELS 1
 
-Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-
-void Light::begin() {
-  pixels.begin();
+Light::Light() {
+  this->pixels = new Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+  this->pixels->begin();
 }
 
 void Light::on() {
-  pixels.clear();
+  this->pixels->clear();
 
   for(int i=0; i<NUMPIXELS; i++) {
-    pixels.setPixelColor(i, pixels.Color(150, 150, 0));
-    pixels.show();
+    this->pixels->setPixelColor(i, this->pixels->Color(150, 150, 0));
+    this->pixels->show();
   }
 }
 
 void Light::off() {
-  pixels.clear();
+  this->pixels->clear();
+  this->pixels->show();
 }

@@ -5,8 +5,10 @@
 
 class Light {
   public:
+    Adafruit_NeoPixel* pixels;
   
-    void begin();
+    Light();
+    
     void on();
     void off();
 };

@@ -5,6 +5,7 @@ struct servConfig {
       char apikey[40];
       char addr[256];
       int interval;
+      char fingerprint[60];
     };
 
 #endif

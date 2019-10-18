@@ -5,6 +5,9 @@
 #include "Config.h"
 Config config;
 
+#include "InternetTime.h"
+InternetTime* internetTime;
+
 #include "Light.h"
 Light light;
 
@@ -22,6 +25,10 @@ void tick() {
 
 void setup() {
   Serial.begin(115200);
+  delay(1000);
+
+  Serial.println("READY...");
+  light.off();
 
   // Set led pin as output
   pinMode(LED_BUILTIN, OUTPUT);
@@ -47,8 +54,8 @@ void setup() {
     config.config = wifiSetup->getConfig();
     config.save();
   }
-  delay(5000);
 
+  internetTime = new InternetTime();
   randomSeed(micros());
   
   Serial.print("local ip: ");
@@ -60,5 +67,9 @@ void setup() {
 }
 
 void loop() {
-
+  Serial.println(internetTime->getTimestamp());
+  light.on();
+  delay(500);
+  light.off();
+  delay(500);
 }

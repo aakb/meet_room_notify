@@ -59,13 +59,14 @@ void WifiSetup::begin() {
   WiFiManager wifiManager;
   WiFiManagerParameter custom_apikey("apikey", "API-KEY", this->config.apikey, 40);
   WiFiManagerParameter custom_addr("addr", "FQDN", this->config.addr, 256);
+  WiFiManagerParameter custom_fingerprint("fingerprint", "SSL fingerprint", this->config.fingerprint, 60);
   WiFiManagerParameter custom_interval("interval", "Interval", String(this->config.interval).c_str(), 10);
 
   // Reset settings - for testing
-  wifiManager.resetSettings();
+  //wifiManager.resetSettings();
 
   // Disable default serial debug output.
-  wifiManager.setDebugOutput(false);
+  //wifiManager.setDebugOutput(false);
 
   // set config save notify callback
   wifiManager.setSaveConfigCallback(WifiSetup::saveConfigCallback);
@@ -73,9 +74,10 @@ void WifiSetup::begin() {
   // Add all your parameters here.
   wifiManager.addParameter(&custom_apikey);
   wifiManager.addParameter(&custom_addr);
+  wifiManager.addParameter(&custom_fingerprint);
   wifiManager.addParameter(&custom_interval);
 
-  if (!wifiManager.autoConnect("SensorArray", "password")) {
+  if (!wifiManager.autoConnect("MeetRoom", "password")) {
     Serial.println("Failed to connect and hit timeout");
     delay(3000);
     ESP.reset();
@@ -85,11 +87,13 @@ void WifiSetup::begin() {
   if (WifiSetup::shouldSaveConfig) {
     strncpy(this->config.apikey, custom_apikey.getValue(), sizeof(this->config.apikey)/sizeof(char));
     strncpy(this->config.addr, custom_addr.getValue(), sizeof(this->config.addr)/sizeof(char));
+    strncpy(this->config.fingerprint, custom_fingerprint.getValue(), sizeof(this->config.fingerprint)/sizeof(char));
     this->config.interval = atoi(custom_interval.getValue());
 
     Serial.println("---------------------===---------------------");
     Serial.println(this->config.apikey);
     Serial.println(this->config.addr);
+    Serial.println(this->config.fingerprint);
     Serial.println(this->config.interval);
     Serial.println("---------------------===---------------------");
   }
